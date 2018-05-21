@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db:
+    container_name: spring-boot-jwt-keycloak
+    image: jboss/keycloak
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - DB_VENDOR=H2
+    command: >
+      bash -c "keycloak/bin/kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user admin --password admin"
+      bash -c "keycloak/bin/kcadm.sh create realms -s realm=spring-security-example -s enabled=true"
+      bash -c "keycloak/bin/kcadm.sh create clients -r spring-security-example -s clientId=curl -s enabled=true -s publicClient=true -s baseUrl=http://localhost:8080 -s adminUrl=http://localhost:8080 -s directAccessGrantsEnabled=true"
+      bash -c "keycloak/bin/kcadm.sh create clients -r spring-security-example -s clientId=spring-security-demo-app -s enabled=true -s baseUrl=http://localhost:8080 -s bearerOnly=true"
+    ports:
+      - 9001:8080
+    volumes:
+      - /data/keycloak/bin:/keycloak/bin
