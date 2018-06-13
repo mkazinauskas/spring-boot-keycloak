@@ -1,18 +1,29 @@
 version: '3'
+
+volumes:
+  postgres_data:
+      driver: local
+
 services:
-  db:
-    container_name: spring-boot-jwt-keycloak
-    image: jboss/keycloak
-    environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=admin
-      - DB_VENDOR=H2
-    command: >
-      bash -c "keycloak/bin/kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user admin --password admin"
-      bash -c "keycloak/bin/kcadm.sh create realms -s realm=spring-security-example -s enabled=true"
-      bash -c "keycloak/bin/kcadm.sh create clients -r spring-security-example -s clientId=curl -s enabled=true -s publicClient=true -s baseUrl=http://localhost:8080 -s adminUrl=http://localhost:8080 -s directAccessGrantsEnabled=true"
-      bash -c "keycloak/bin/kcadm.sh create clients -r spring-security-example -s clientId=spring-security-demo-app -s enabled=true -s baseUrl=http://localhost:8080 -s bearerOnly=true"
-    ports:
-      - 9001:8080
-    volumes:
-      - /data/keycloak/bin:/keycloak/bin
+  postgres:
+      image: postgres
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      environment:
+        POSTGRES_DB: keycloak
+        POSTGRES_USER: keycloak
+        POSTGRES_PASSWORD: password
+  keycloak:
+      image: jboss/keycloak
+      environment:
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_PASSWORD: password
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: Pa55w0rd
+      ports:
+        - 8080:8080
+      depends_on:
+        - postgres
