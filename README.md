@@ -72,5 +72,6 @@ Created new user with id '51a709a7-c0a3-4604-80c5-838c202fbbbc'
 
 # Import config from file
 
-
+Please use `realm-export.json` file to import into keycloak system.
+ 
 https://sandor-nemeth.github.io/java/spring/2017/06/15/spring-boot-with-keycloak.html

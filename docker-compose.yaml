@@ -2,7 +2,7 @@ version: '3'
 
 volumes:
   postgres_data:
-      driver: local
+    driver: local
 
 services:
   postgres:
