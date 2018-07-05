@@ -14,7 +14,7 @@ services:
         POSTGRES_USER: keycloak
         POSTGRES_PASSWORD: password
   keycloak:
-      image: jboss/keycloak
+      build: docker-files/keycloak
       environment:
         DB_VENDOR: POSTGRES
         DB_ADDR: postgres
@@ -22,8 +22,9 @@ services:
         DB_USER: keycloak
         DB_PASSWORD: password
         KEYCLOAK_USER: admin
-        KEYCLOAK_PASSWORD: Pa55w0rd
+        KEYCLOAK_PASSWORD: admin
+      command: -b 0.0.0.0 -Dkeycloak.migration.file="/setup/import.json" -Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
       ports:
-        - 8080:8080
+        - "8080:8080"
       depends_on:
         - postgres

@@ -16,7 +16,7 @@
 
 ## As user
 ### Get auth key
-`curl -ss --data "grant_type=password&client_id=curl&username=joe_user&password=admin" http://localhost:8080/auth/realms/spring-security-example/protocol/openid-connect/token`
+`curl -ss --data "grant_type=password&client_id=curl&username=jim_user&password=admin" http://localhost:8080/auth/realms/spring-security-example/protocol/openid-connect/token`
 
 ### Curl secured endpoint
 `curl -H "Authorization: bearer [your-token]" http://localhost:9002/user/hello`
