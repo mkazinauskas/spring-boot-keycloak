@@ -1,18 +1,24 @@
 #!/bin/sh
 
+ADMIN_USER=importer
+
+ADMIN_PASSWORD=Pa55w0rd
+
 cp -r /opt/jboss/keycloak /setup/keycloak
 
 cd /setup/keycloak/bin
 
-./add-user-keycloak.sh -u admin -p Pa55w0rd
+echo "Setting up default admin $ADMIN_USER"
+
+./add-user-keycloak.sh -u $ADMIN_USER -p $ADMIN_PASSWORD
 
 nohup ./standalone.sh > /dev/null 2>&1 &
 
-until curl -q localhost:8080; do sleep 1; done
+until curl -s localhost:8080; do sleep 1; echo "Waiting for started server"; done
 
 echo "Setting up users"
 
-./kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user admin --password Pa55w0rd
+./kcadm.sh config credentials --server http://localhost:8080/auth --realm master --user $ADMIN_USER --password $ADMIN_PASSWORD
 
 ./kcadm.sh create realms -s realm=spring-security-example -s enabled=true
 
@@ -46,7 +52,7 @@ nohup ./standalone.sh \
     -Dkeycloak.migration.file=import.json \
 > /dev/null 2>&1 &
 
-until curl -q localhost:8080; do sleep 1; done
+until curl -s localhost:8080; do sleep 1; echo "Waiting for started server"; done
 
 ./jboss-cli.sh --connect command=:shutdown
 
