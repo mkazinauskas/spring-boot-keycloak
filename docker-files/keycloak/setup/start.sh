@@ -4,10 +4,6 @@ ADMIN_USER=importer
 
 ADMIN_PASSWORD=Pa55w0rd
 
-cp -r /opt/jboss/keycloak /setup/keycloak
-
-cd /setup/keycloak/bin
-
 echo "Setting up default admin $ADMIN_USER"
 
 ./add-user-keycloak.sh -u $ADMIN_USER -p $ADMIN_PASSWORD
@@ -55,9 +51,3 @@ nohup ./standalone.sh \
 until curl -s localhost:8080; do sleep 1; echo "Waiting for started server"; done
 
 ./jboss-cli.sh --connect command=:shutdown
-
-cp import.json /setup
-
-cat /setup/import.json
-
-rm -rf /setup/keycloak
