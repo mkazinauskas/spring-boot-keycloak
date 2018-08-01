@@ -36,6 +36,7 @@ dependencies {
 	compile 'org.codehaus.groovy:groovy'
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	testCompile 'org.springframework.security:spring-security-test'
+	testCompile "org.keycloak:keycloak-test-helper:${keycloakVersion}"
 }
 
 dependencyManagement {

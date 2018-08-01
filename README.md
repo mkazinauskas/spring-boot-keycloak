@@ -28,3 +28,7 @@
 # Update realms and users
 ## Edit `docker/keycloak/setup/setup.sh`
 ## Run this file inside your local keycloak installation bin folder
+
+
+Testing
+https://github.com/keycloak/keycloak-quickstarts/blob/latest/app-authz-rest-springboot/pom.xml
