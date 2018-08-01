@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.5.13.RELEASE'
+		springBootVersion = '2.0.3.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -24,15 +24,14 @@ repositories {
 }
 
 ext {
-	keycloakVersion = '3.4.2.Final'
+	keycloakVersion = '4.0.0.Final'
 }
 
 dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-security'
 	compile 'org.springframework.boot:spring-boot-starter-web'
 
-	compile 'org.keycloak:keycloak-spring-boot-starter'
-	compile 'org.keycloak:keycloak-spring-security-adapter'
+	compile 'org.keycloak:keycloak-spring-boot-2-starter'
 
 	compile 'org.codehaus.groovy:groovy'
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
