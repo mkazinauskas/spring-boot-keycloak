@@ -67,62 +67,7 @@
       ],
       "secret": "secret",
       "directAccessGrantsEnabled": true,
-      "authorizationServicesEnabled": true,
-      "authorizationSettings": {
-        "allowRemoteResourceManagement": false,
-        "policyEnforcementMode": "ENFORCING",
-        "resources": [
-          {
-            "name": "Default Resource",
-            "uri": "/user/hello"
-          },
-          {
-            "name": "Admin Resource",
-            "uri": "/admin/hello"
-          }
-        ],
-        "policies": [
-          {
-            "name": "Admin User Policy",
-            "type": "role",
-            "logic": "POSITIVE",
-            "decisionStrategy": "UNANIMOUS",
-            "config": {
-              "roles": "[{\"id\":\"admin\",\"required\":false}]"
-            }
-          },
-          {
-            "name": "Admin Resource Permission",
-            "type": "resource",
-            "logic": "POSITIVE",
-            "decisionStrategy": "UNANIMOUS",
-            "config": {
-              "resources": "[\"Admin Resource\"]",
-              "applyPolicies": "[\"Admin User Policy\"]"
-            }
-          },
-          {
-            "name": "Only User Policy",
-            "type": "role",
-            "logic": "POSITIVE",
-            "decisionStrategy": "UNANIMOUS",
-            "config": {
-              "roles": "[{\"id\":\"user\",\"required\":false}]"
-            }
-          },
-          {
-            "name": "Default Resource Permission",
-            "description": "A permission that applies to the default resource",
-            "type": "resource",
-            "logic": "POSITIVE",
-            "decisionStrategy": "UNANIMOUS",
-            "config": {
-              "resources": "[\"Default Resource\"]",
-              "applyPolicies": "[\"Only User Policy\"]"
-            }
-          }
-        ]
-      }
+      "authorizationServicesEnabled": true
     }
   ]
 }
