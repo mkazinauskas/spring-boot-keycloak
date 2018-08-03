@@ -20,7 +20,7 @@ echo "Setting up users"
 
 CURL_ID=$(./kcadm.sh create clients -r spring-security-example -s clientId=curl -s enabled=true -s publicClient=true -s baseUrl=http://localhost:8080 -s adminUrl=http://localhost:8080 -s directAccessGrantsEnabled=true -i)
 
-DEMO_APP_ID=$(./kcadm.sh create clients -r spring-security-example -s clientId=spring-security-demo-app -s enabled=true -s baseUrl=http://localhost:8080 -s bearerOnly=true -i)
+DEMO_APP_ID=$(./kcadm.sh create clients -r spring-security-example -s clientId=keycloak-demo-app -s enabled=true -s baseUrl=http://localhost:8080 -s bearerOnly=true -i)
 
 ./kcadm.sh create clients/$DEMO_APP_ID/roles -r spring-security-example -s name=admin -s 'description=Admin role'
 
@@ -32,13 +32,13 @@ JOE_ADMIN_ID=$(./kcadm.sh create users -r spring-security-example -s username=jo
 
 ./kcadm.sh update users/$JOE_ADMIN_ID/reset-password -r spring-security-example -s type=password -s value=admin -s temporary=false -n
 
-./kcadm.sh add-roles -r spring-security-example --uusername=joe_admin --cclientid spring-security-demo-app --rolename admin
+./kcadm.sh add-roles -r spring-security-example --uusername=joe_admin --cclientid keycloak-demo-app --rolename admin
 
 JIM_USER_ID=$(./kcadm.sh create users -r spring-security-example -s username=jim_user -s enabled=true -i)
 
 ./kcadm.sh update users/$JIM_USER_ID/reset-password -r spring-security-example -s type=password -s value=admin -s temporary=false -n
 
-./kcadm.sh add-roles -r spring-security-example --uusername=jim_user --cclientid spring-security-demo-app --rolename user
+./kcadm.sh add-roles -r spring-security-example --uusername=jim_user --cclientid keycloak-demo-app --rolename user
 
 ./jboss-cli.sh --connect command=:shutdown
 

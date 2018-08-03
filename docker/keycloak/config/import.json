@@ -201,7 +201,7 @@
         "clientRole" : true,
         "containerId" : "16402ef7-dc4a-49b9-88e7-3ded9d8ba87c"
       } ],
-      "spring-security-demo-app" : [ {
+      "keycloak-demo-app" : [ {
         "id" : "61ffdee1-3c19-48d0-a2f0-7a281e805e90",
         "name" : "user",
         "description" : "User role",
@@ -288,7 +288,7 @@
     "requiredActions" : [ ],
     "realmRoles" : [ "uma_authorization", "offline_access" ],
     "clientRoles" : {
-      "spring-security-demo-app" : [ "user" ],
+      "keycloak-demo-app" : [ "user" ],
       "account" : [ "manage-account", "view-profile" ]
     },
     "notBefore" : 0,
@@ -316,7 +316,7 @@
     "requiredActions" : [ ],
     "realmRoles" : [ "uma_authorization", "offline_access" ],
     "clientRoles" : {
-      "spring-security-demo-app" : [ "admin" ],
+      "keycloak-demo-app" : [ "admin" ],
       "account" : [ "manage-account", "view-profile" ]
     },
     "notBefore" : 0,
@@ -503,7 +503,7 @@
     "optionalClientScopes" : [ "address", "phone", "offline_access" ]
   }, {
     "id" : "24438a3e-02d5-40fd-98fe-2704fdf3995c",
-    "clientId" : "spring-security-demo-app",
+    "clientId" : "keycloak-demo-app",
     "baseUrl" : "http://localhost:8080",
     "surrogateAuthRequired" : false,
     "enabled" : true,

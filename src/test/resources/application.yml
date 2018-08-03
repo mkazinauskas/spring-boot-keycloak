@@ -6,9 +6,12 @@ test:
   keycloak:
     username: admin
     password: password
+    realmJsonPath: /keycloak-test-realm.json
 
 keycloak:
   auth-server-url: http://localhost:8081/auth
+  resource: keycloak-demo-app
+  realm: keycloak-test
+  principal-attribute: preferred_username
   bearer-only: true
-  realm: spring-boot-quickstart
-  resource: app-authz-rest-springboot
+  use-resource-role-mappings: true
