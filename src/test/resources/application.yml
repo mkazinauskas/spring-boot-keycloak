@@ -2,23 +2,13 @@ server:
   connection-timeout: 5000s
   port: 8080
 
-app:
-  username: admin
-  password: password
+test:
+  keycloak:
+    username: admin
+    password: password
 
 keycloak:
-  auth-server-url: http://localhost:8180/auth
+  auth-server-url: http://localhost:8081/auth
   bearer-only: true
-  credentials:
-    secret: secret
   realm: spring-boot-quickstart
   resource: app-authz-rest-springboot
-  securityConstraints:
-    -  authRoles:
-       - user
-       - admin
-       securityCollections:
-        -   name: protected
-            patterns:
-            - /*
-  ssl-required: external

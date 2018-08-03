@@ -30,10 +30,11 @@ ext {
 dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-security'
 	compile 'org.springframework.boot:spring-boot-starter-web'
-
 	compile 'org.keycloak:keycloak-spring-boot-2-starter'
-
 	compile 'org.codehaus.groovy:groovy'
+
+	testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+	testCompile 'org.spockframework:spock-spring:1.1-groovy-2.4'
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	testCompile 'org.springframework.security:spring-security-test'
 	testCompile "org.keycloak:keycloak-test-helper:${keycloakVersion}"

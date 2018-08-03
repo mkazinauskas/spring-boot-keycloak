@@ -2,7 +2,7 @@ server:
   port: 8080
 
 keycloak:
-  auth-server-url: http://localhost:8081/auth/
+  auth-server-url: http://localhost:8081/auth
   resource: spring-security-demo-app
   realm: spring-security-example
   principal-attribute: preferred_username

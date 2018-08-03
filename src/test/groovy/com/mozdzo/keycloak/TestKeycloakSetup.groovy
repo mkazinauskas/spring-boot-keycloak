@@ -13,8 +13,8 @@ class TestKeycloakSetup implements InitializingBean, DisposableBean {
     private final String realm
     private final String authServerUrl
 
-    TestKeycloakSetup(@Value('${app.username}') String username,
-                      @Value('${app.password}') String password,
+    TestKeycloakSetup(@Value('${test.keycloak.username}') String username,
+                      @Value('${test.keycloak.password}') String password,
                       @Value('${keycloak.realm}') String realm,
                       @Value('${keycloak.auth-server-url}') String authServerUrl) {
         this.username = username
@@ -27,6 +27,7 @@ class TestKeycloakSetup implements InitializingBean, DisposableBean {
     void afterPropertiesSet() throws Exception {
         TestsHelper.baseUrl = authServerUrl
         TestsHelper.testRealm = realm
+        TestsHelper.keycloakBaseUrl = authServerUrl
         try {
             TestsHelper.importTestRealm(username, password, '/quickstart-realm.json')
         } catch (IOException e) {
