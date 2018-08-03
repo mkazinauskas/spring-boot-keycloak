@@ -1,18 +1,24 @@
-package com.mozdzo.keycloak;
+package com.mozdzo.keycloak.resources;
 
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloEndpoint {
+class HelloResource {
+
     @GetMapping("/admin/hello")
-    public String sayHelloToAdmin() {
+    String helloAdmin() {
         return "Hello Admin";
     }
 
     @GetMapping("/user/hello")
-    public String sayHelloToUser() {
+    String helloUser() {
         return "Hello User";
+    }
+
+    @GetMapping("/hello")
+    String helloAnonymous() {
+        return "Hello Anonymous";
     }
 }

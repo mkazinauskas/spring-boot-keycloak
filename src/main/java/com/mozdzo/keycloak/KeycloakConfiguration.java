@@ -29,7 +29,7 @@ public class KeycloakConfiguration extends KeycloakWebSecurityConfigurerAdapter 
 
     @Override
     protected KeycloakAuthenticationProvider keycloakAuthenticationProvider() {
-        final KeycloakAuthenticationProvider provider = super.keycloakAuthenticationProvider();
+        KeycloakAuthenticationProvider provider = super.keycloakAuthenticationProvider();
         provider.setGrantedAuthoritiesMapper(grantedAuthoritiesMapper());
         return provider;
     }
@@ -49,9 +49,9 @@ public class KeycloakConfiguration extends KeycloakWebSecurityConfigurerAdapter 
         super.configure(http);
         http
                 .authorizeRequests()
-                .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/user/*").hasRole("USER")
-                .anyRequest().permitAll();
+                .mvcMatchers("/admin/**").hasRole("ADMIN")
+                .mvcMatchers("/user/**").hasRole("USER")
+                .mvcMatchers("/**").permitAll();
     }
 
     @Bean
@@ -61,16 +61,16 @@ public class KeycloakConfiguration extends KeycloakWebSecurityConfigurerAdapter 
 
     @Bean
     public FilterRegistrationBean keycloakAuthenticationProcessingFilterRegistrationBean(
-            final KeycloakAuthenticationProcessingFilter filter) {
-        final FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);
+            KeycloakAuthenticationProcessingFilter filter) {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);
         registrationBean.setEnabled(false);
         return registrationBean;
     }
 
     @Bean
     public FilterRegistrationBean keycloakPreAuthActionsFilterRegistrationBean(
-            final KeycloakPreAuthActionsFilter filter) {
-        final FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);
+            KeycloakPreAuthActionsFilter filter) {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean(filter);
         registrationBean.setEnabled(false);
         return registrationBean;
     }
