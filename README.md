@@ -1,9 +1,9 @@
 # spring-boot-keycloak
 
 # Setup
-## Start container `docker/keycloak` with command `docker-compose up`
-## Start application `./gradlew bootRun`
-## Query application with commands
+1. Start container `docker/keycloak` with command `docker-compose up`
+2. Start application `./gradlew bootRun`
+3. Query application with commands
 
 # Use application
 
