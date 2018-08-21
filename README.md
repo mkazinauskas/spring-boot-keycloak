@@ -1,5 +1,7 @@
 # spring-boot-keycloak
 
+[![Build Status](https://travis-ci.org/modestukasai/spring-boot-keycloak.svg?branch=master)](https://travis-ci.org/modestukasai/spring-boot-keycloak)
+
 # Setup
 1. Start container `docker/keycloak` with command `docker-compose up`
 2. Start application `./gradlew bootRun`
