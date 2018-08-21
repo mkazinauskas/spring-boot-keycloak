@@ -4,6 +4,7 @@ server:
 
 test:
   keycloak:
+    port: 8081
     username: admin
     password: password
     realmJsonPath: /keycloak-test-realm.json

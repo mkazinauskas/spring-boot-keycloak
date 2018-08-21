@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '2.0.4.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.0.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'groovy'
@@ -20,28 +20,31 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 ext {
-	keycloakVersion = '4.0.0.Final'
+    keycloakVersion = '4.0.0.Final'
 }
 
 dependencies {
-	compile 'org.springframework.boot:spring-boot-starter-security'
-	compile 'org.springframework.boot:spring-boot-starter-web'
-	compile 'org.keycloak:keycloak-spring-boot-2-starter'
-	compile 'org.codehaus.groovy:groovy'
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.keycloak:keycloak-spring-boot-2-starter'
+    compile 'org.codehaus.groovy:groovy'
+    compileOnly 'org.springframework.boot:spring-boot-configuration-processor'
 
-	testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
-	testCompile 'org.spockframework:spock-spring:1.1-groovy-2.4'
-	testCompile 'org.springframework.boot:spring-boot-starter-test'
-	testCompile 'org.springframework.security:spring-security-test'
-	testCompile "org.keycloak:keycloak-test-helper:${keycloakVersion}"
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+    testCompile 'org.spockframework:spock-spring:1.1-groovy-2.4'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.springframework.security:spring-security-test'
+    testCompile 'org.testcontainers:testcontainers:1.8.3'
+    testCompile "org.keycloak:keycloak-test-helper:${keycloakVersion}"
 }
 
 dependencyManagement {
-	imports {
-		mavenBom "org.keycloak.bom:keycloak-adapter-bom:${keycloakVersion}"
-	}
+    imports {
+        mavenBom "org.keycloak.bom:keycloak-adapter-bom:${keycloakVersion}"
+    }
 }
