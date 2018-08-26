@@ -27,7 +27,7 @@ class KeycloakApplicationResourceSpec extends Specification {
     def 'should access admin resource with admin token'() {
         when:
             ResponseEntity<String> response = restTemplate.exchange(
-                    '/admin/hello',
+                    '/admin',
                     GET,
                     HttpEntityBuilder.builder()
                             .bearer(tokenProvider.token(ADMIN))
@@ -44,7 +44,7 @@ class KeycloakApplicationResourceSpec extends Specification {
     def 'should forbid access to admin resource with user token'() {
         when:
             ResponseEntity<String> response = restTemplate.exchange(
-                    '/admin/hello',
+                    '/admin',
                     GET,
                     HttpEntityBuilder.builder()
                             .bearer(tokenProvider.token(USER))
@@ -66,7 +66,7 @@ class KeycloakApplicationResourceSpec extends Specification {
     def 'should access user resource with user token'() {
         when:
             ResponseEntity<String> response = restTemplate.exchange(
-                    '/user/hello',
+                    '/user',
                     GET,
                     HttpEntityBuilder.builder()
                             .bearer(tokenProvider.token(USER))
@@ -83,7 +83,7 @@ class KeycloakApplicationResourceSpec extends Specification {
     def 'should forbid access to user resource with admin token'() {
         when:
             ResponseEntity<String> response = restTemplate.exchange(
-                    '/user/hello',
+                    '/user',
                     GET,
                     HttpEntityBuilder.builder()
                             .bearer(tokenProvider.token(ADMIN))
@@ -105,7 +105,7 @@ class KeycloakApplicationResourceSpec extends Specification {
     def 'should allow access public resource with admin token'() {
         when:
             ResponseEntity<String> response = restTemplate.exchange(
-                    '/hello',
+                    '/',
                     GET,
                     HttpEntityBuilder.builder()
                             .bearer(tokenProvider.token(ADMIN))
@@ -119,7 +119,7 @@ class KeycloakApplicationResourceSpec extends Specification {
 
     def 'should allow to access public resource'() {
         when:
-            ResponseEntity<String> response = restTemplate.getForEntity('/hello', String)
+            ResponseEntity<String> response = restTemplate.getForEntity('/', String)
         then:
             response.statusCode == OK
             response.body == 'Hello Anonymous'

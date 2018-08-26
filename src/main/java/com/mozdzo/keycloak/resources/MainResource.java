@@ -5,19 +5,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class HelloResource {
+class MainResource {
 
-    @GetMapping("/admin/hello")
+    @GetMapping("/admin")
     String helloAdmin() {
         return "Hello Admin";
     }
 
-    @GetMapping("/user/hello")
+    @GetMapping("/user")
     String helloUser() {
         return "Hello User";
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/")
     String helloAnonymous() {
         return "Hello Anonymous";
     }
