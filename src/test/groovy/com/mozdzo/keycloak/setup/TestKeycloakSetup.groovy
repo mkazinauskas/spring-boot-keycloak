@@ -66,10 +66,11 @@ class TestKeycloakSetup implements InitializingBean, DisposableBean {
         private final GenericContainer container
 
         KeycloakContainer(String username, String password, int port) {
-            this.container = new FixedHostPortGenericContainer('jboss/keycloak:4.2.0.Final')
+            this.container = new FixedHostPortGenericContainer('jboss/keycloak:4.8.3.Final')
                     .withFixedExposedPort(port, KEYCLOAK_INTERNAL_PORT)
                     .withEnv(['KEYCLOAK_USER'    : username,
-                              'KEYCLOAK_PASSWORD': password])
+                              'KEYCLOAK_PASSWORD': password,
+                              'DB_VENDOR'        : 'h2'])
                     .withMinimumRunningDuration(ofSeconds(10))
                     .waitingFor(WAITING_STRATEGY)
         }

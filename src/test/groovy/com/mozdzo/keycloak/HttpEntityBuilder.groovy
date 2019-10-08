@@ -13,17 +13,17 @@ class HttpEntityBuilder<B> {
 
     private final HttpHeaders headers = new HttpHeaders()
 
-    static HttpEntityBuilder<B> builder() {
-        return new HttpEntityBuilder<B>()
+    static HttpEntityBuilder builder() {
+        return new HttpEntityBuilder()
     }
 
-    def <B> HttpEntityBuilder<B> body(B body) {
+    HttpEntityBuilder<B> body(B body) {
         this.body = body
         return this
     }
 
     HttpEntityBuilder<B> bearer(String token) {
-        headers.add('Authorization', "Bearer ${token}")
+        headers.add('Authorization', "Bearer ${token}".toString())
         return this
     }
 
@@ -36,7 +36,7 @@ class HttpEntityBuilder<B> {
         return this
     }
 
-    HttpEntity<B> build() {
+    HttpEntity build() {
         return new HttpEntity(body, headers)
     }
 }
