@@ -1,9 +1,8 @@
 version: '3'
 
 services:
-
   keycloak:
-     image: jboss/keycloak:4.2.0.Final
+     image: jboss/keycloak:6.0.1
      restart: on-failure
      command:
       - "-b"
@@ -27,7 +26,6 @@ services:
        - "8081:8080"
      depends_on:
        - keycloak-db
-
   keycloak-db:
     image: postgres:10
     environment:
