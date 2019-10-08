@@ -14,6 +14,8 @@ repositories {
 }
 
 ext {
+    //Using old version due to various issues in latest library and demos
+
     keycloakVersion = '6.0.1'
     testContainersVersion = '1.12.2'
     spockVersion = '1.3-groovy-2.5'
@@ -22,7 +24,9 @@ ext {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
     implementation 'org.keycloak:keycloak-spring-boot-starter'
+
     implementation 'org.codehaus.groovy:groovy'
 
     compileOnly 'org.springframework.boot:spring-boot-configuration-processor'
