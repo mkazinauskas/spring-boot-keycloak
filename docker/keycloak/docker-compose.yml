@@ -2,7 +2,7 @@ version: '3'
 
 services:
   keycloak:
-     image: jboss/keycloak:7.0.0
+     image: jboss/keycloak:8.0.1
      restart: on-failure
      command:
       - "-b"

@@ -1,6 +1,5 @@
 package com.mozdzo.keycloak;
 
-import org.keycloak.adapters.KeycloakConfigResolver;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
@@ -18,11 +17,6 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @Configuration
 @EnableWebSecurity
 class KeycloakConfiguration extends KeycloakWebSecurityConfigurerAdapter {
-
-    @Bean
-    KeycloakConfigResolver keycloakConfigResolver() {
-        return new KeycloakSpringBootConfigResolver();
-    }
 
     @Override
     protected KeycloakAuthenticationProvider keycloakAuthenticationProvider() {
@@ -58,5 +52,14 @@ class KeycloakConfiguration extends KeycloakWebSecurityConfigurerAdapter {
         SimpleAuthorityMapper mapper = new SimpleAuthorityMapper();
         mapper.setConvertToUpperCase(true);
         return mapper;
+    }
+
+    @Configuration
+    public static class KeycloakConfigurationForSpringResolver {
+
+        @Bean
+        public KeycloakSpringBootConfigResolver keycloakConfigResolver() {
+            return new KeycloakSpringBootConfigResolver();
+        }
     }
 }
