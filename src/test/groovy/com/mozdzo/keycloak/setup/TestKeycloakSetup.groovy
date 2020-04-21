@@ -3,7 +3,6 @@ package com.mozdzo.keycloak.setup
 import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.DisposableBean
 import org.springframework.stereotype.Component
-import org.springframework.test.context.ActiveProfiles
 import org.testcontainers.containers.FixedHostPortGenericContainer
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.wait.strategy.HttpWaitStrategy
@@ -13,7 +12,6 @@ import javax.annotation.PostConstruct
 
 import static java.time.Duration.ofSeconds
 
-@ActiveProfiles(value = 'test')
 @Component
 @Slf4j
 class TestKeycloakSetup implements DisposableBean {
@@ -52,7 +50,7 @@ class TestKeycloakSetup implements DisposableBean {
         private final GenericContainer container
 
         KeycloakContainer(String username, String password, int port) {
-            this.container = new FixedHostPortGenericContainer('jboss/keycloak:8.0.1')
+            this.container = new FixedHostPortGenericContainer('jboss/keycloak:9.0.3')
                     .withFixedExposedPort(port, KEYCLOAK_INTERNAL_PORT)
                     .withEnv(['KEYCLOAK_USER'    : username,
                               'KEYCLOAK_PASSWORD': password,
