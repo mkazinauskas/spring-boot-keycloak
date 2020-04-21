@@ -1,5 +1,4 @@
 server:
-  connection-timeout: 5000s
   port: 8080
 
 test:

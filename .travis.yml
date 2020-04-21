@@ -20,14 +20,8 @@ cache:
   - $HOME/.gradle/caches/
   - $HOME/.gradle/wrapper/
 
-before_script:
-- echo "Skipping before script"
-
-install:
-- echo "Skipping before script"
-
 script:
-- ./gradlew build
+- ./gradlew build -i
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)

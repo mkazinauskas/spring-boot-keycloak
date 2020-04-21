@@ -1,7 +1,8 @@
 plugins {
-    id 'org.springframework.boot' version '2.1.9.RELEASE'
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'groovy'
+    id 'idea'
 }
 
 group = 'com.mozdzo'
@@ -14,9 +15,7 @@ repositories {
 }
 
 ext {
-    //Using old version due to various issues in latest library and demos
-
-    keycloakVersion = '8.0.1'
+    keycloakVersion = '9.0.3'
     testContainersVersion = '1.12.4'
     spockVersion = '1.3-groovy-2.5'
 }

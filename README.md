@@ -1,6 +1,7 @@
-# spring-boot-keycloak
-
 [![Build Status](https://travis-ci.org/modestukasai/spring-boot-keycloak.svg?branch=master)](https://travis-ci.org/modestukasai/spring-boot-keycloak)
+
+# spring-boot-keycloak
+This example shows how to integrate keycloak auth server 9.0.3 with spring boot
 
 # Setup
 1. Start container `docker/keycloak` with command `docker-compose up`
