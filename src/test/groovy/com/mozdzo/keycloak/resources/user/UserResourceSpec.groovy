@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity
 import static com.mozdzo.keycloak.TestUsers.ADMIN
 import static com.mozdzo.keycloak.TestUsers.USER
 import static org.springframework.http.HttpMethod.GET
-import static org.springframework.http.HttpStatus.*
+import static org.springframework.http.HttpStatus.FORBIDDEN
+import static org.springframework.http.HttpStatus.OK
+import static org.springframework.http.HttpStatus.UNAUTHORIZED
 
 class UserResourceSpec extends IntegrationSpec {
 
