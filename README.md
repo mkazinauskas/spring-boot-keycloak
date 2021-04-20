@@ -1,4 +1,5 @@
 [![Build on Push](https://github.com/mkazinauskas/spring-boot-keycloak/actions/workflows/build-on-push.yml/badge.svg?branch=master)](https://github.com/mkazinauskas/spring-boot-keycloak/actions/workflows/build-on-push.yml)
+[![Known Vulnerabilities](https://snyk.io/test/github/mkazinauskas/spring-boot-keycloak/badge.svg)](https://snyk.io/test/github/mkazinauskas/spring-boot-keycloak)
 
 # spring-boot-keycloak
 This example shows how to integrate keycloak auth server 9.0.3 with spring boot
