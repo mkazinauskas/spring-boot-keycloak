@@ -15,8 +15,8 @@ repositories {
 }
 
 ext {
-    keycloakVersion = '9.0.3'
-    testContainersVersion = '1.12.4'
+    keycloakVersion = '12.0.4'
+    testContainersVersion = '1.15.3'
     spockVersion = '1.3-groovy-2.5'
 }
 

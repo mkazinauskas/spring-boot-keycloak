@@ -15,14 +15,14 @@ This example shows how to integrate keycloak auth server 9.0.3 with spring boot
 `curl -ss --data "grant_type=password&client_id=curl&username=joe_admin&password=admin" http://localhost:8081/auth/realms/spring-security-example/protocol/openid-connect/token`
 
 ### Curl secured endpoint
-`curl -H "Authorization: bearer [your-token]" http://localhost:8080/admin/hello`
+`curl -H "Authorization: bearer [your-token]" http://localhost:8080/admin`
 
 ## As user
 ### Get auth key
 `curl -ss --data "grant_type=password&client_id=curl&username=jim_user&password=admin" http://localhost:8081/auth/realms/spring-security-example/protocol/openid-connect/token`
 
 ### Curl secured endpoint
-`curl -H "Authorization: bearer [your-token]" http://localhost:8080/user/hello`
+`curl -H "Authorization: bearer [your-token]" http://localhost:8080/user`
 
 # Keycloak config from scratch
 Execute commands inside container

@@ -1,14 +1,10 @@
-test:
-  keycloak:
-    port: 8081
-    username: admin
-    password: password
-    realmJsonPath: /keycloak-test-realm.json
+server:
+  port: 8080
 
 keycloak:
   auth-server-url: http://localhost:8081/auth
   resource: keycloak-demo-app
-  realm: keycloak-test
+  realm: spring-security-example
   principal-attribute: preferred_username
   bearer-only: true
   use-resource-role-mappings: true
